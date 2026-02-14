@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Aracely ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== FONDO PRINCIPAL ===== */
+
+body{
+margin:0;
+height:100vh;
+font-family:'Poppins', sans-serif;
+background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* ===== PARTICULAS ===== */
+
+.particulas span{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:flotar 10s linear infinite;
+opacity:0.7;
+}
+
+@keyframes flotar{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* ===== ESCENA SOBRE ===== */
+
+.escena{
+text-align:center;
+}
+
+.titulo{
+color:white;
+font-family:'Dancing Script', cursive;
+font-size:45px;
+text-shadow:0 0 20px rgba(255,255,255,0.8);
+}
+
+.subtitulo{
+color:white;
+margin-bottom:30px;
+}
+
+/* ===== SOBRE ===== */
+
+.sobre{
+width:320px;
+height:200px;
+background: linear-gradient(145deg,#ff4d6d,#ff758f);
+margin:auto;
+border-radius:12px;
+position:relative;
+cursor:pointer;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+transition:0.4s;
+}
+
+.sobre:hover{
+transform:scale(1.05);
+}
+
+.tapa{
+position:absolute;
+border-left:160px solid transparent;
+border-right:160px solid transparent;
+border-top:100px solid #ff8fab;
+width:0;
+height:0;
+transform-origin:top;
+transition:1s;
+}
+
+.sobre.abierto .tapa{
+transform:rotateX(180deg);
+}
+
+/* ===== CARTA ===== */
+
+.carta{
+position:absolute;
+background:white;
+color:#333;
+width:280px;
+padding:20px;
+border-radius:10px;
+top:20px;
+left:20px;
+transform:translateY(100px);
+opacity:0;
+transition:1s;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.sobre.abierto .carta{
+transform:translateY(-120px);
+opacity:1;
+}
+
+.texto{
+font-family:'Dancing Script', cursive;
+font-size:24px;
+white-space:pre-line;
+min-height:140px;
+}
+
+/* ===== BOTON ===== */
+
+.boton{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+display:none;
+}
+
+/* ===== PANTALLA PREGUNTA ===== */
+
+.pantalla2{
+position:absolute;
+width:100%;
+height:100%;
+background: linear-gradient(135deg,#ff758c,#ff4d6d);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:1s;
+}
+
+.pantalla2.visible{
+opacity:1;
+pointer-events:auto;
+}
+
+.pregunta{
+color:white;
+font-family:'Dancing Script', cursive;
+font-size:50px;
+animation:latido 1s infinite;
+}
+
+@keyframes latido{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.1);}
+}
+
+/* ===== GALERIA ===== */
+
+.galeria{
+display:flex;
+gap:15px;
+margin-top:20px;
+}
+
+.galeria img{
+width:130px;
+height:130px;
+border-radius:15px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.15);
+}
+
+/* ===== BOTONES ===== */
+
+.botones button{
+margin:10px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:18px;
+cursor:pointer;
+}
+
+/* ===== PANTALLA FINAL MAGICA ===== */
+
+.pantallaFinal{
+position:absolute;
+width:100%;
+height:100%;
+background: radial-gradient(circle,#ff758c,#ff4d6d,#1a0010);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+opacity:0;
+pointer-events:none;
+transition:2s;
+}
+
+.pantallaFinal.visible{
+opacity:1;
+pointer-events:auto;
+}
+
+/* Aura */
+
+.aura{
+position:absolute;
+width:300px;
+height:300px;
+border-radius:50%;
+background: radial-gradient(circle,rgba(255,255,255,0.6),transparent);
+animation:latidoAura 2s infinite;
+}
+
+@keyframes latidoAura{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.3);}
+}
+
+/* Foto final */
+
+.fotoFinal{
+width:240px;
+height:240px;
+border-radius:20px;
+object-fit:cover;
+box-shadow:0 0 40px white;
+animation:flotarFoto 3s infinite ease-in-out;
+}
+
+@keyframes flotarFoto{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+}
+
+/* Mensaje final */
+
+.mensajeFinal{
+margin-top:30px;
+font-size:40px;
+font-family:'Dancing Script', cursive;
+color:white;
+text-align:center;
+max-width:600px;
+min-height:120px;
+}
+
+/* Corazones lluvia */
+
+.corazonFinal{
+position:absolute;
+font-size:20px;
+animation:caer linear infinite;
+}
+
+@keyframes caer{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
+</style>
+</head>
+<body>
+
+<!-- PARTICULAS -->
+<div class="particulas">
+<span style="left:10%"></span>
+<span style="left:30%"></span>
+<span style="left:50%"></span>
+<span style="left:70%"></span>
+<span style="left:90%"></span>
+</div>
+
+<!-- ESCENA SOBRE -->
+<div class="escena">
+
+<div class="titulo">Para Mi Aracely ❤️</div>
+<div class="subtitulo">Haz click sobre la carta</div>
+
+<div class="sobre" onclick="abrirSobre()" id="sobre">
+
+<div class="tapa"></div>
+
+<div class="carta">
+
+<div class="texto" id="texto"></div>
+
+<button class="boton" id="continuar" onclick="mostrarPregunta()">Seguir ❤️</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PANTALLA PREGUNTA -->
+<div class="pantalla2" id="pantalla2">
+
+<div class="pregunta">¿Quieres ser mi San Valentín? ❤️</div>
+
+<div style="color:white;margin-top:10px;font-size:20px;">
+Por todo el tiempo que llevamos, perdoname por lo poco que pueda darte ❤️
+</div>
+
+<div class="galeria">
+<img src="foto1.jpeg">
+<img src="foto2.jpeg">
+<img src="foto3.jpeg">
+</div>
+
+<div class="botones">
+<button onclick="acepto()">SI ❤️</button>
+<button onclick="huir(this)">NO 💔</button>
+</div>
+
+</div>
+
+<!-- PANTALLA FINAL -->
+<div class="pantallaFinal" id="pantallaFinal">
+
+<div class="aura"></div>
+
+<img src="foto4.jpeg" class="fotoFinal">
+
+<div class="mensajeFinal" id="mensajeFinal"></div>
+
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3">
+</audio>
+
+<script>
+
+/* CARTA */
+
+let mensaje = `Mi princesa,
+
+Desde que llegaste a mi vida,
+todo se volvió más hermoso
+
+Este tiempo contigo ha sido
+el más feliz de mi vida
+
+Hoy quiero preguntarte algo
+muy especial... ❤️`;
+
+let i=0;
+
+function abrirSobre(){
+
+let sobre=document.getElementById("sobre");
+
+sobre.classList.add("abierto");
+
+document.getElementById("musica").play();
+
+let intervalo=setInterval(()=>{
+
+document.getElementById("texto").innerHTML+=mensaje[i];
+
+i++;
+
+if(i>=mensaje.length){
+
+clearInterval(intervalo);
+
+document.getElementById("continuar").style.display="inline-block";
+
+}
+
+},40);
+
+}
+
+/* MOSTRAR PREGUNTA */
+
+function mostrarPregunta(){
+
+document.getElementById("pantalla2").classList.add("visible");
+
+}
+
+/* BOTON NO HUYE */
+
+function huir(btn){
+
+btn.style.position="absolute";
+btn.style.top=Math.random()*80+"%";
+btn.style.left=Math.random()*80+"%";
+
+}
+
+/* PANTALLA FINAL */
+
+function acepto(){
+
+document.getElementById("pantalla2").classList.remove("visible");
+
+document.getElementById("pantallaFinal").classList.add("visible");
+
+crearCorazones();
+
+escribirFinal();
+
+}
+
+/* MENSAJE FINAL */
+
+let mensajeFinalTexto=`Mi niña hermosa,
+
+Gracias por estos hermosos
+410 días a tu lado ❤️
+
+Eres el amor de mi vida,
+mi felicidad,
+y mi mas grande alegria
+
+Te amo y te amare eternamente ❤️`;
+
+let j=0;
+
+function escribirFinal(){
+
+let intervalo=setInterval(()=>{
+
+document.getElementById("mensajeFinal").innerHTML+=mensajeFinalTexto[j];
+
+j++;
+
+if(j>=mensajeFinalTexto.length)
+clearInterval(intervalo);
+
+},50);
+
+}
+
+/* LLUVIA CORAZONES */
+
+function crearCorazones(){
+
+setInterval(()=>{
+
+let corazon=document.createElement("div");
+
+corazon.innerHTML="❤️";
+
+corazon.className="corazonFinal";
+
+corazon.style.left=Math.random()*100+"%";
+
+corazon.style.animationDuration=(Math.random()*3+3)+"s";
+
+corazon.style.fontSize=(Math.random()*25+15)+"px";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>corazon.remove(),6000);
+
+},300);
+
+}
+
+</script>
+
+</body>
+</html>
